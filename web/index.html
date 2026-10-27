@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#101a2e">
+<title>元件库</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <span class="logo">⚡</span>
+      <div class="brand-text">
+        <h1>元件库</h1>
+        <p>清单入库 · 借还记账</p>
+      </div>
+    </div>
+    <div class="top-actions">
+      <button id="btnAdd" class="ghost icon" type="button" title="新增元件" aria-label="新增元件">＋</button>
+      <button id="btnSettings" class="ghost icon" type="button" title="位置管理、数据位置、导出" aria-label="设置">⚙</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="stats" id="stats" aria-label="统计"></section>
+
+  <div class="toolbar">
+    <label class="search">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 4a6 6 0 1 0 3.9 10.6l4.2 4.2 1.4-1.4-4.2-4.2A6 6 0 0 0 10 4zm0 2a4 4 0 1 1 0 8 4 4 0 0 1 0-8z"/></svg>
+      <input id="search" type="search" placeholder="搜索名称 / 型号 / 编号 / 位置" autocomplete="off">
+    </label>
+    <div class="segmented" id="tabs" role="tablist">
+      <button type="button" data-tab="stock" class="active" role="tab">库存</button>
+      <button type="button" data-tab="loans" role="tab">借还 <span class="pill-count" id="loanCount"></span></button>
+      <button type="button" data-tab="intake" role="tab">入库</button>
+      <button type="button" data-tab="loss" role="tab">损耗</button>
+      <button type="button" data-tab="log" role="tab">流水</button>
+    </div>
+  </div>
+
+  <div id="filterBar" class="filterbar hidden"></div>
+
+  <section id="view" class="view" aria-live="polite"></section>
+
+  <footer class="foot">
+    <span id="footInfo"></span>
+    <span class="foot-links">
+      <a href="/export/components.csv">导出库存</a>
+      <a href="/export/loans.csv">导出借还</a>
+      <a href="/export/movements.csv">导出流水</a>
+    </span>
+  </footer>
+</main>
+
+<div id="modalRoot"></div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
